@@ -22,11 +22,13 @@ Struktur file disesuaikan untuk mendukung komponen-komponen spesifik dari desain
 │   ├── domain/             # CLEAN ARCH: TYPES & INTERFACES
 │   │   └── entities/
 │   │       ├── Magazine.ts
-│   │       └── GalleryItem.ts
+│   │       ├── GalleryItem.ts
+│   │       └── OrganizationStruct.ts # [NEW] Type data struktur
 │   │
 │   ├── data/               # CLEAN ARCH: DATA ACCESS
 │   │   └── repositories/
 │   │       ├── MagazineRepository.ts  # Fetch dari magazines.json
+│   │       ├── StructureRepository.ts # [NEW] Fetch structure.jsonon
 │   │       └── GalleryRepository.ts   # Fetch dari gallery.json
 │   │
 │   ├── presentation/       # CLEAN ARCH: UI COMPONENTS
@@ -39,13 +41,17 @@ Struktur file disesuaikan untuk mendukung komponen-komponen spesifik dari desain
 │   │   │   ├── features/   # Komponen Spesifik Fitur
 │   │   │   │   ├── HeroSection.tsx
 │   │   │   │   ├── MagazineSection.tsx
-│   │   │   │   ├── MagazineViewerModal.tsx  # [NEW] Popup Baca Majalah
+│   │   │   │   ├── MagazineViewerModal.tsx
+│   │   │   │   ├── OrganizationSection.tsx
+│   │   │   │   ├── DivisionDetailModal.tsx   # [NEW] Popup Anggota Divisi
 │   │   │   │   ├── GallerySection.tsx
 │   │   │   │   └── PartnershipSection.tsx
 │   │   │   │
 │   │   │   └── ui/         # Komponen Kecil (Reusable)
+│   │   │       ├── Modal.tsx           # [NEW] Base Modal Component
 │   │   │       ├── Button.tsx
 │   │   │       ├── MagazineCard.tsx
+│   │   │       ├── MemberCard.tsx
 │   │   │       ├── GalleryItem.tsx
 │   │   │       └── SectionHeading.tsx
 │   │   │

@@ -42,3 +42,16 @@ Menggunakan Google Fonts:
 - Tanpa Backend.
 - Images disimpan di folder `/public/images`.
 - Deployment target: Vercel (Recommended) atau GitHub Pages.
+
+## 5. Strategi Optimasi Performa (Anti-Lemot)
+
+Untuk menjamin website **sangat ringan** di HP dan PC, kita menerapkan standar berikut:
+
+1.  **Static Site Generation (SSG)**: Semua halaman HTML sudah jadi saat build time. Tidak ada proses loading database saat user membuka web. Loading time < 1 detik.
+2.  **Next.js Image Optimization**: Kita wajib menggunakan komponen `<Image />`.
+    - Otomatis mengubah format gambar ke **WebP/AVIF** (ukuran file 30% lebih kecil).
+    - Otomatis **Resize** gambar sesuai ukuran layar (HP tidak akan mendownload gambar resolusi 4K).
+    - **Lazy Loading**: Gambar yang belum terlihat di layar tidak akan didownload sampai user scroll ke sana.
+3.  **Code Splitting**: JavaScript hanya didownload seperlunya per halaman/komponen.
+4.  **Font Optimization**: Google Fonts didownload saat build, mencegah "Flash of Unstyled Text" dan layout bergeser.
+5.  **PDF Lazy Load**: Penampil majalah hanya akan loading jika tombol "Baca" diklik, tidak membebani halaman utama.

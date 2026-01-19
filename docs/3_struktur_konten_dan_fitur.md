@@ -21,15 +21,20 @@ Website ini bersifat **Single Page Landing** (One Page), dengan navigasi scroll 
     - Judul & Deskripsi Section.
     - **List Kartu Majalah**: Menampilkan Cover, Volume, Tanggal, Judul, Deskripsi Singkat, dan Link Baca.
 
-4.  **Section Galeri Kenangan**
+4.  **Section Struktur Organisasi (Hybrid Layout)**
+    - **Pimpinan Inti (Overlay/Langsung)**: Foto Ketua, Wakil, Sekretaris, Bendahara ditampilkan langsung di halaman (Grid Besar).
+    - **Divisi (Popup)**: Di halaman utama hanya ikon & nama divisi. Jika diklik, muncul **Popup/Overlay** berisi daftar lengkap staff divisi tersebut.
+    - _Tujuan_: Agar halaman utama tidak terlalu panjang (scrolling jauh) jika anggotanya banyak.
+
+5.  **Section Galeri Kenangan**
     - **Filter Tahun**: (Semua, 2025, 2024, 2023, dst).
     - **Grid Foto**: Foto kegiatan dengan overlay caption saat di-hover.
 
-5.  **Section Kerja Sama**
+6.  **Section Kerja Sama**
     - **Jenis Kerjasama**: Media Partner, Paid Promote, Sponsorship.
     - CTA Button: "Hubungi Humas" (Link ke WhatsApp).
 
-6.  **Footer**
+7.  **Footer**
     - Brand Info & Deskripsi Singkat.
     - Quick Links.
     - Info Kontak (Alamat, Email, WA).
@@ -74,7 +79,48 @@ Mengisi section "E-Majalah".
 > File PDF ditaruh di folder `/public/data/magazines/`.
 > Jika file terlalu besar, opsi fallback adalah tetap menggunakan link external (Google Drive/Issuu).
 
-### B. `gallery.json`
+### B. `structure.json` (Struktur Organisasi)
+
+Data hirarki pengurus untuk ditampilkan secara dinamis.
+
+```json
+{
+  "leaders": [
+    {
+      "name": "Budi Santoso",
+      "role": "Ketua Umum",
+      "photo": "/images/members/budi.jpg"
+    },
+    {
+      "name": "Siti Aminah",
+      "role": "Wakil Ketua",
+      "photo": "/images/members/siti.jpg"
+    }
+  ],
+  "bph": [
+    {
+      "name": "Rina",
+      "role": "Sekretaris",
+      "photo": "/images/members/rina.jpg"
+    },
+    { "name": "Joko", "role": "Bendahara", "photo": "/images/members/joko.jpg" }
+  ],
+  "divisions": [
+    {
+      "name": "Redaksi",
+      "head": "Andi (Pemred)",
+      "members": ["Member A", "Member B", "Member C"]
+    },
+    {
+      "name": "Multimedia",
+      "head": "Sarah",
+      "members": ["Member X", "Member Y"]
+    }
+  ]
+}
+```
+
+### C. `gallery.json`
 
 Mengisi section "Kenangan". Field `year` digunakan untuk fitur filter.
 
@@ -101,7 +147,7 @@ Mengisi section "Kenangan". Field `year` digunakan untuk fitur filter.
 ]
 ```
 
-### C. `partnership.json` (Opsional)
+### D. `partnership.json` (Opsional)
 
 Bisa di-hardcode di code karena jarang berubah, tapi jika ingin dinamis:
 
