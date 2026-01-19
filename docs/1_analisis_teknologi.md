@@ -1,49 +1,44 @@
-# 1. Analisis & Pemilihan Teknologi
+# 1. Analisis & Spesifikasi Teknologi (Revisi UI)
 
-Berdasarkan kebutuhan Anda:
+Berdasarkan referensi desain yang diberikan, berikut adalah spesifikasi teknis final.
 
-- **Target:** Website Informasi Organisasi Mahasiswa.
-- **Biaya:** Gratis hosting.
-- **Performa:** Ringan (Optimasi HP).
-- **Sifat Data:** Statis (Fix saat publish).
+## 1. Core Stack
 
-## 1. Apakah Perlu Backend?
+- **Framework**: Next.js (App Router) - Mode Static Export.
+- **Styling**: Tailwind CSS (Wajib, sesuai referensi).
+- **Icons**: FontAwesome (via CDN atau react-icons).
 
-**Jawaban: TIDAK.**
+## 2. Design System (Diekstrak dari UI)
 
-Untuk kasus di mana data "tidak berubah" (hanya pengurus yang mengupdate konten, bukan pengunjung yang login dan posting), membuat backend server (API) akan:
+Kita akan mengonfigurasikan `tailwind.config.ts` agar sesuai persis dengan referensi `index.html`.
 
-1.  Menambah biaya (perlu hosting server/database).
-2.  Memperlambat akses (browser harus request ke server dulu).
+### Warna (Color Palette)
 
-**Solusi:** Gunakan **Next.js dengan Static Site Generation (SSG)**.
+- **Primary (Biru Pers)**: `#1e3a8a` (Sesuai class `bg-primary`)
+- **Secondary (Kuning Aksen)**: `#f59e0b` (Sesuai class `bg-secondary`)
+- **Dark (Teks Utama)**: `#111827`
+- **Light (Background)**: `#f3f4f6` & `#ffffff`
 
-- Data disimpan dalam bentuk file **JSON** atau **Markdown (.md)** langsung di dalam folder project.
-- Saat Anda siap publish, jalankan perintah `build`. Next.js akan membaca file-file tersebut dan merubahnya menjadi halaman HTML siap saji.
-- Hasilnya: Website super kencang karena tidak ada "loading" database.
+### Tipografi
 
-## 2. Frontend Framework
+Menggunakan Google Fonts:
 
-**Rekomendasi: Next.js (React Framework)**
+1.  **Judul/Headings**: `Merriweather` (Serif) - Memberikan kesan formal, "surat kabar", dan elegan.
+2.  **Body Text**: `Inter` (Sans-serif) - Modern, bersih, mudah dibaca di layar HP.
 
-- **Kenapa:** Mendukung SSG secara native. Paling populer untuk hosting gratis di Vercel. Punya optimasi gambar (`next/image`) otomatis agar ringan di HP.
+### UI Library Support
+
+- **Animation**: Referensi menggunakan `@keyframes fadeIn`. Di React kita bisa gunakan `framer-motion` untuk hasil lebih smooth, atau cukup native CSS transition sesuai referensi agar ringan. -> **Keputusan: Native CSS / Tailwind Class (sesuai request "Ringan").**
+- **Scroll**: Smooth scrolling diaktifkan di `html`.
 
 ## 3. State Management
 
-Anda bertanya rekomendasi State Management.
-**Rekomendasi: Zustand**
+- **Zustand**: Digunakan untuk:
+  - Mobile Menu Toggle (Buka/Tutup Sidebar).
+  - Gallery Filter State (Menyimpan tahun yang dipilih: 'all', '2025', dll).
 
-- **Kenapa:**
-  - Sangat ringan (hanya beberapa KB).
-  - Syntax sederhana (Hooks-based).
-  - Cocok dengan Clean Architecture (bisa memisahkan logic store dari UI komponen).
-- _Catatan:_ Untuk website statis, state management biasanya tidak terlalu kompleks (paling hanya untuk UI state seperti "Menu Navigasi Mobile Buka/Tutup" atau "Filter Divisi Organisasi"). Redux terlalu berat (overkill).
+## 4. Hosting Strategy
 
-## 4. Styling
-
-**Rekomendasi: Tailwind CSS**
-
-- **Kenapa:**
-  - Anda bisa membuat file CSS `utility-class` yang sangat kecil saat production.
-  - Memudahkan membuat desain responsif (tampilan HP vs Laptop) tanpa pusing media query manual.
-  - Sangat mudah dikustomisasi untuk "Aestetik Premium" (Warna custom, font, spacing).
+- Tanpa Backend.
+- Images disimpan di folder `/public/images`.
+- Deployment target: Vercel (Recommended) atau GitHub Pages.

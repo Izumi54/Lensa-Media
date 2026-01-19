@@ -1,45 +1,58 @@
-# 4. Rancangan Struktur Folder Project
+# 4. Rancangan Struktur Folder Project (Revisi UI)
 
-Ini adalah peta fisik file kita nanti di VS Code.
+Struktur file disesuaikan untuk mendukung komponen-komponen spesifik dari desain referensi.
 
 ```
 / (Root Project)
-├── public/                 # File statis (Gambar, Logo, Icon)
+├── public/
 │   ├── images/
-│   │   ├── members/
-│   │   └── events/
-│   └── data/               # DATABASE KITA (File JSON)
-│       ├── members.json
-│       └── events.json
+│   │   ├── magazines/      # Cover majalah
+│   │   ├── gallery/        # Foto kegiatan
+│   │   └── parnertship/    # (Opsional) Icon jika pakai gambar
+│   └── data/               # DATABASE JSON (Single Source of Truth)
+│       ├── magazines.json
+│       └── gallery.json
 │
 ├── src/
-│   ├── app/                # Next.js App Router (Halaman Website/Routing)
-│   │   ├── page.tsx        # Halaman Home
-│   │   ├── about/          # Halaman About
-│   │   └── layout.tsx      # Layout utama (Navbar & Footer tetap)
+│   ├── app/
+│   │   ├── layout.tsx      # Load Google Fonts (Inter & Merriweather) & Global CSS
+│   │   ├── page.tsx        # Halaman Utama (One Page Scroll)
+│   │   └── globals.css     # @tailwind directives & Custom Animations
 │   │
-│   ├── domain/             # CLEAN ARCH: DOMAIN LAYER
-│   │   ├── entities/       # Definisi Tipe Data (TS Interfaces)
-│   │   │   ├── Member.ts
-│   │   │   └── Event.ts
-│   │   └── repositories/   # Interface Kontrak Data
-│   │       └── OrganizationRepository.ts
+│   ├── domain/             # CLEAN ARCH: TYPES & INTERFACES
+│   │   └── entities/
+│   │       ├── Magazine.ts
+│   │       └── GalleryItem.ts
 │   │
-│   ├── data/               # CLEAN ARCH: DATA LAYER
-│   │   └── repositories/   # Implementasi pengambilan data
-│   │       └── JsonOrganizationRepository.ts
+│   ├── data/               # CLEAN ARCH: DATA ACCESS
+│   │   └── repositories/
+│   │       ├── MagazineRepository.ts  # Fetch dari magazines.json
+│   │       └── GalleryRepository.ts   # Fetch dari gallery.json
 │   │
-│   ├── presentation/       # CLEAN ARCH: PRESENTATION LAYER
-│   │   ├── components/     # Komponen UI (Tombol, Kartu, Navbar)
-│   │   │   ├── ui/         # Komponen kecil (Button, Input)
-│   │   │   └── features/   # Komponen fitur (MemberCard, EventList)
-│   │   ├── stores/         # State Management (Zustand)
-│   │   │   └── useOrgStore.ts
-│   │   └── styles/         # Global styles (Tailwind directives)
+│   ├── presentation/       # CLEAN ARCH: UI COMPONENTS
+│   │   ├── components/
+│   │   │   ├── layout/     # Komponen Struktur Utama
+│   │   │   │   ├── Navbar.tsx
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   └── SectionContainer.tsx
+│   │   │   │
+│   │   │   ├── features/   # Komponen Spesifik Fitur
+│   │   │   │   ├── HeroSection.tsx
+│   │   │   │   ├── MagazineSection.tsx
+│   │   │   │   ├── GallerySection.tsx
+│   │   │   │   └── PartnershipSection.tsx
+│   │   │   │
+│   │   │   └── ui/         # Komponen Kecil (Reusable)
+│   │   │       ├── Button.tsx
+│   │   │       ├── MagazineCard.tsx
+│   │   │       ├── GalleryItem.tsx
+│   │   │       └── SectionHeading.tsx
+│   │   │
+│   │   └── stores/         # ZUSTAND STORES
+│   │       └── useUIStore.ts  # Handle Mobile Menu & Gallery Filter
 │   │
-│   └── lib/                # Fungsi bantuan (Helpers/Utils)
+│   └── lib/                # Utilities (misal: format tanggal, classNames)
 │
-├── docs/                   # Dokumen rancangan ini
-├── next.config.js
+├── tailwind.config.ts      # Config warna & font
 └── package.json
 ```

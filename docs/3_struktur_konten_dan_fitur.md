@@ -1,63 +1,119 @@
-# 3. Rancangan Fitur dan Konten
+# 3. Rancangan Fitur dan Konten (Revisi Berdasarkan UI)
 
-Sebelum coding, kita harus sepakat apa saja yang tampil di layar HP user.
+Berdasarkan referensi UI `index.html`, berikut adalah struktur final konten dan data yang dibutuhkan.
 
-## Struktur Halaman (Sitemap)
+## 1. Sitemap (Struktur Halaman)
 
-1.  **Beranda (Home)**
-    - **Hero Section:** Foto besar pengurus/kegiatan + Jargon Organisasi. Kesan pertama "Wah keren".
-    - **Tentang Singkat:** Visi Misi ringkas.
-    - **Highlight Kegiatan:** 3 kegiatan terbaru/terbesar.
-    - **CTA (Call to Action):** Tombol "Bergabung" atau "Hubungi Kami".
+Website ini bersifat **Single Page Landing** (One Page), dengan navigasi scroll ke section terkait.
 
-2.  **Profil (About Us)**
-    - **Sejarah:** Cerita berdirinya organisasi.
-    - **Visi & Misi:** Detail.
-    - **Struktur Organisasi:** Bagan organisasi (Ketua, Wakil, Sekretaris, Divisi).
+1.  **Header / Navbar**
+    - Logo & Nama: "Lensa Media"
+    - Menu: Beranda, E-Majalah, Kenangan, Kerja Sama.
+    - CTA Button: "Join Kami" (Link External ke GForm).
 
-3.  **Divisi / Departemen**
-    - Daftar divisi.
-    - Detail per divisi (Tugas, Proker, Anggota).
+2.  **Hero Section (Beranda)**
+    - Tagline: "Pers Mahasiswa Terkini".
+    - Headline: "Menyuarakan Kebenaran, Merangkai Peristiwa".
+    - Subheadline: Deskripsi singkat portal.
+    - Tombol Aksi: "Baca Berita Terkini" (Link External) & "Baca Majalah" (Scroll ke bawah).
 
-4.  **Galeri / Kegiatan (Events)**
-    - Dokumentasi foto-foto kegiatan.
-    - Artikel singkat per kegiatan.
+3.  **Section E-Majalah**
+    - Judul & Deskripsi Section.
+    - **List Kartu Majalah**: Menampilkan Cover, Volume, Tanggal, Judul, Deskripsi Singkat, dan Link Baca.
 
-5.  **Kontak**
-    - Alamat Sekretariat (bisa embed Google Maps).
-    - Link Sosmed (Instagram, TikTok, LinkedIn).
-    - Form Email (Opsional, bisa diarahkan ke WhatsApp Link agar lebih mudah/gratis tanpa server email).
+4.  **Section Galeri Kenangan**
+    - **Filter Tahun**: (Semua, 2025, 2024, 2023, dst).
+    - **Grid Foto**: Foto kegiatan dengan overlay caption saat di-hover.
 
-## Struktur Data (JSON Schema Draft)
+5.  **Section Kerja Sama**
+    - **Jenis Kerjasama**: Media Partner, Paid Promote, Sponsorship.
+    - CTA Button: "Hubungi Humas" (Link ke WhatsApp).
 
-Ini gambaran bagaimana kita menyimpan data nanti.
+6.  **Footer**
+    - Brand Info & Deskripsi Singkat.
+    - Quick Links.
+    - Info Kontak (Alamat, Email, WA).
+    - Social Media Icons (IG, TikTok, FB, YT).
 
-**members.json**
+---
+
+## 2. Struktur Data (JSON Schema)
+
+Kita perlu 3 file data utama di `public/data/` untuk membuat konten ini dinamis namun statis.
+
+### A. `magazines.json`
+
+Mengisi section "E-Majalah".
 
 ```json
 [
   {
-    "id": "1",
-    "name": "Budi Santoso",
-    "position": "Ketua Umum",
-    "division": "BPH",
-    "photoUrl": "/images/members/budi.jpg",
-    "instagram": "@budisan"
+    "id": "vol-1",
+    "volume": "01",
+    "date": "Januari 2024",
+    "title": "Dinamika Kampus & Mahasiswa",
+    "description": "Mengupas tuntas isu-isu terbaru seputar kebijakan kampus...",
+    "coverImage": "/images/magazines/vol1.jpg",
+    "readLink": "https://issuu.com/lensamedia/docs/vol1"
   },
-  ...
+  {
+    "id": "vol-2",
+    "volume": "02",
+    "date": "Juni 2024",
+    "title": "Suara Demokrasi Muda",
+    "description": "Refleksi gerakan mahasiswa dalam mengawal demokrasi...",
+    "coverImage": "/images/magazines/vol2.jpg",
+    "readLink": "https://issuu.com/lensamedia/docs/vol2"
+  }
 ]
 ```
 
-**events.json**
+### B. `gallery.json`
+
+Mengisi section "Kenangan". Field `year` digunakan untuk fitur filter.
 
 ```json
 [
   {
-    "id": "ev-1",
-    "title": "Latihan Kepemimpinan 2024",
-    "date": "2024-02-10",
-    "description": "Acara tahunan untuk melatih jiwa kepemimpinan...",
-    "thumbnail": "/images/events/lkmm.jpg"
+    "id": "gal-1",
+    "year": "2025",
+    "title": "Rapat Kerja 2025",
+    "image": "/images/gallery/raker2025.jpg"
+  },
+  {
+    "id": "gal-2",
+    "year": "2024",
+    "title": "Liputan Lapangan",
+    "image": "/images/gallery/liputan.jpg"
+  },
+  {
+    "id": "gal-3",
+    "year": "2023",
+    "title": "Diklat Jurnalistik",
+    "image": "/images/gallery/diklat.jpg"
+  }
+]
+```
+
+### C. `partnership.json` (Opsional)
+
+Bisa di-hardcode di code karena jarang berubah, tapi jika ingin dinamis:
+
+```json
+[
+  {
+    "id": "p-1",
+    "type": "Media Partner",
+    "icon": "fa-handshake", // FontAwesome class
+    "description": "Dukung publikasi acara organisasi...",
+    "isPopular": false
+  },
+  {
+    "id": "p-2",
+    "type": "Paid Promote",
+    "icon": "fa-bullhorn",
+    "description": "Promosikan produk, jasa, atau kampanye...",
+    "isPopular": true
   }
 ]
 ```
