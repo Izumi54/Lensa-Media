@@ -85,36 +85,83 @@ Data hirarki pengurus untuk ditampilkan secara dinamis.
 
 ```json
 {
-  "leaders": [
+  "advisors": [
     {
-      "name": "Budi Santoso",
-      "role": "Ketua Umum",
-      "photo": "/images/members/budi.jpg"
+      "name": "Dr. IR. H. Moochammad Qomaruddin,S.T, M.T,I,P.M",
+      "role": "Pelindung",
+      "photo": "/images/members/advisor1.jpg"
     },
     {
-      "name": "Siti Aminah",
-      "role": "Wakil Ketua",
-      "photo": "/images/members/siti.jpg"
+      "name": "Gunawan Mohammad, S.T., M.T.",
+      "role": "Penanggung Jawab",
+      "photo": "/images/members/advisor2.jpg"
+    }
+  ],
+  "leaders": [
+    {
+      "name": "Randy Eka Saputra",
+      "role": "Pimpinan Umum",
+      "photo": "/images/members/randy.jpg"
+    },
+    {
+      "name": "Dias Putra Kurnia Sandi",
+      "role": "Pimpinan Redaksi",
+      "photo": "/images/members/dias.jpg"
     }
   ],
   "bph": [
     {
-      "name": "Rina",
-      "role": "Sekretaris",
-      "photo": "/images/members/rina.jpg"
+      "name": "Rofid Nur Abror",
+      "role": "Sekretaris 1",
+      "photo": "/images/members/rofid.jpg"
     },
-    { "name": "Joko", "role": "Bendahara", "photo": "/images/members/joko.jpg" }
+    {
+      "name": "Desy Ratna Syafitri",
+      "role": "Sekretaris 2",
+      "photo": "/images/members/desy.jpg"
+    },
+    {
+      "name": "Widiyanti",
+      "role": "Bendahara",
+      "photo": "/images/members/widiyanti.jpg"
+    }
   ],
   "divisions": [
     {
       "name": "Redaksi",
-      "head": "Andi (Pemred)",
-      "members": ["Member A", "Member B", "Member C"]
+      "head": "Handika Akbar Putra Pratama",
+      "members": [
+        "M. Afriza Maula Putra",
+        "Beryl Alfaret",
+        "Gaza Al Aqsho",
+        "Fahrul Alfiannur",
+        "Ilham Thoriqul Falah",
+        "Bagus Sajiwo"
+      ]
     },
     {
-      "name": "Multimedia",
-      "head": "Sarah",
-      "members": ["Member X", "Member Y"]
+      "name": "Digitalisasi",
+      "head": "Reza Dwi Mahendra",
+      "members": [
+        "Rasya Aditya Amelia Putra",
+        "Muhammad Jalaluddin mahfuhdo",
+        "M. fahriliyawan saputra",
+        "Mohamad Ulil Absor",
+        "Gei Zhinjian Albivenanza",
+        "Aflah Badrutstsani Fithrurrahman",
+        "Rizky Agung Sutejo"
+      ]
+    },
+    {
+      "name": "Kepenulisan",
+      "head": "Aklam Afriat",
+      "members": [
+        "Rizky Lainin Nafis",
+        "Nur Afaaniin Aliyah Arianti",
+        "Mayangsari Puji Lestari",
+        "Risalatul Fitriyah",
+        "Sinta Maulida"
+      ]
     }
   ]
 }
