@@ -54,7 +54,7 @@ Mengisi section "E-Majalah".
     "title": "Dinamika Kampus & Mahasiswa",
     "description": "Mengupas tuntas isu-isu terbaru seputar kebijakan kampus...",
     "coverImage": "/images/magazines/vol1.jpg",
-    "readLink": "https://issuu.com/lensamedia/docs/vol1"
+    "pdfUrl": "/data/magazines/vol1.pdf"
   },
   {
     "id": "vol-2",
@@ -63,10 +63,16 @@ Mengisi section "E-Majalah".
     "title": "Suara Demokrasi Muda",
     "description": "Refleksi gerakan mahasiswa dalam mengawal demokrasi...",
     "coverImage": "/images/magazines/vol2.jpg",
-    "readLink": "https://issuu.com/lensamedia/docs/vol2"
+    "pdfUrl": "/data/magazines/vol2.pdf"
   }
 ]
 ```
+
+> [!NOTE]
+> **Fitur Baca Majalah**:
+> Kita akan menggunakan **Modal Popup** yang berisi `iframe` PDF Viewer bawaan browser.
+> File PDF ditaruh di folder `/public/data/magazines/`.
+> Jika file terlalu besar, opsi fallback adalah tetap menggunakan link external (Google Drive/Issuu).
 
 ### B. `gallery.json`
 

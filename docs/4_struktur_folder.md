@@ -39,6 +39,7 @@ Struktur file disesuaikan untuk mendukung komponen-komponen spesifik dari desain
 │   │   │   ├── features/   # Komponen Spesifik Fitur
 │   │   │   │   ├── HeroSection.tsx
 │   │   │   │   ├── MagazineSection.tsx
+│   │   │   │   ├── MagazineViewerModal.tsx  # [NEW] Popup Baca Majalah
 │   │   │   │   ├── GallerySection.tsx
 │   │   │   │   └── PartnershipSection.tsx
 │   │   │   │
