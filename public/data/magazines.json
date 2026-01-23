@@ -5,7 +5,7 @@
     "date": "Januari 2024",
     "title": "Majalah Swa Paksa",
     "description": "Edisi pertama Lensa Media: Swa Paksa.",
-    "coverImage": "/images/magazines/swa_paksa_cover.png",
+    "coverImage": "/images/magazines/swa_paksa.png",
     "pdfUrl": "/data/Majalah Swa Paksa Edisi 1.pdf"
   },
   {
@@ -14,7 +14,7 @@
     "date": "Juni 2024",
     "title": "Majalah Techno",
     "description": "Edisi kedua Lensa Media: Techno.",
-    "coverImage": "/images/magazines/techno_cover.png",
+    "coverImage": "/images/magazines/techno.png",
     "pdfUrl": "/data/Majalah Techno Edisi 2.pdf"
   }
 ]

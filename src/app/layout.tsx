@@ -4,6 +4,11 @@ import "./globals.css";
 import { Navbar } from "@/presentation/components/layout/Navbar";
 import { Footer } from "@/presentation/components/layout/Footer";
 
+// FontAwesome Config to prevent Hydration Mismatch
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 // Load Fonts
 const inter = Inter({
   variable: "--font-inter",

@@ -73,9 +73,6 @@ export const Footer = () => {
             <h4 className="font-bold text-lg mb-4">Ikuti Kami</h4>
             <div className="flex gap-4">
               <SocialIcon href="https://www.instagram.com/lpmlensamedia/" icon={faInstagram} hoverColor="hover:bg-pink-600" />
-              {/* <SocialIcon href="#" icon={faTiktok} hoverColor="hover:bg-black hover:border-white border-transparent" />
-              <SocialIcon href="#" icon={faFacebookF} hoverColor="hover:bg-blue-600" />
-              <SocialIcon href="#" icon={faYoutube} hoverColor="hover:bg-red-600" /> */}
             </div>
           </div>
         </div>
