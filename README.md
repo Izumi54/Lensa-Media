@@ -84,4 +84,4 @@ File: `public/data/magazines.json`
 
 ---
 
-&copy; 2024-2025 LPM Lensa Media
+&copy; 2025-2026 LPM Lensa Media
